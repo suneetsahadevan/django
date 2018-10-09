@@ -1,0 +1,44 @@
+Django Tutorial:
+
+Python Virtual environment
+
+python3 -m venv myvenv          #Create virtual environment
+
+source myvenv/bin/activate      #Set the virtual environment
+
+/home/sunny/django              #we must be in the django home directory
+
+django-admin startproject mysite .    #Create a project
+
+Starting the Project https://tutorial.djangogirls.org/en/django_start_project/
+
+Within MySite we create an application called blog
+
+The blog must contain objects called posts.
+
+the model can contain properties and actions
+
+Objects are defined in models.py in the blog folder. Posts is a class with each field defined like title, author AuthenticationMiddleware
+More about the field types https://docs.djangoproject.com/en/2.0/ref/models/fields/#field-types
+
+
+    models.CharField – this is how you define text with a limited number of characters.
+    models.TextField – this is for long text without a limit. Sounds ideal for blog post content, right?
+    models.DateTimeField – this is a date and time.
+    models.ForeignKey – this is a link to another model.
+
+
+after defining the model we need to migrate the changes to the DB
+
+python manage.py makemigrations blog
+
+python manage.py migrate blog
+
+python manage.py createsuperuser
+
+login to tyhe admin page http://127.0.0.1:8000/admin/
+
+Username = admin
+Password = Fasttrack_15
+
+More details regarding the django admin page = https://docs.djangoproject.com/en/2.0/ref/contrib/admin/
