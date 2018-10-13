@@ -8,6 +8,8 @@ source myvenv/bin/activate      #Set the virtual environment
 
 /home/sunny/django              #we must be in the django home directory
 
+python manage.py runserver      #run the server
+
 django-admin startproject mysite .    #Create a project
 
 Starting the Project https://tutorial.djangogirls.org/en/django_start_project/
