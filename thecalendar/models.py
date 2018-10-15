@@ -13,5 +13,5 @@ class Event(models.Model):
     def schedule(self):
         self.save()
 
-    def __str__(self):
+    def __str__(self):                      #displays the task_summary in admin page
         return self.task_summary
