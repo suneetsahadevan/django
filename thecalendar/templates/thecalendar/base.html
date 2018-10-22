@@ -2,10 +2,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/thecalendar.css' %}">
   </head>
 
   <body>
+    <div class="topnav">
+      <a class="active" href="#home">Work Planner</a>
+      <a href="#news">Shifts</a>
+      <a href="#contact">Incidents</a>
+      <a href="#about">Alerts</a>
+    </div>
     <h1>The Calendar: {{monthname}} {{year}}</h1>
     <div class="grid-container">
     {% for day in monthdays %}
