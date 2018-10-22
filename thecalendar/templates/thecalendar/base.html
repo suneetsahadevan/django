@@ -13,10 +13,22 @@
       <a href="#contact">Incidents</a>
       <a href="#about">Alerts</a>
     </div>
-    <h1>The Calendar: {{monthname}} {{year}}</h1>
+    <h1 class="calendar-navbar">The Calendar: {{currentmonthname}} {{currentyear}}  Month Starts with :{{startdayofmonth}}</h1>
     <div class="grid-container">
-    {% for day in monthdays %}
-      <div class="grid-item">{{ day }}</div>
-    {% endfor %}
+
+      <div class="grid-item calendar-header">Monday</div>
+      <div class="grid-item calendar-header">Tuesday</div>
+      <div class="grid-item calendar-header">Wednesday</div>
+      <div class="grid-item calendar-header">Thursday</div>
+      <div class="grid-item calendar-header">Friday</div>
+      <div class="grid-item calendar-header">Saturday</div>
+      <div class="grid-item calendar-header">Sunday</div>
+      {% for day in monthdays %}
+        {% if day == currentday %}
+          <div class="grid-item calendar-current-day">{{ day }}</div>
+        {% else %}
+          <div class="grid-item">{{ day }}</div>
+        {% endif %}
+      {% endfor %}
     </div>
   </body>

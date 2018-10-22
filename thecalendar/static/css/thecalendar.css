@@ -1,6 +1,6 @@
 .grid-container {
   display: inline-grid;
-  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-template-columns: repeat(7, 1fr);
   background-color: #DCF1F1;
   padding: 10px;
 }
@@ -8,8 +8,23 @@
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
-  font-size: 30px;
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
   text-align: center;
+}
+
+.calendar-header {
+  background-color: #55959C;
+  font-weight: bold;
+}
+
+.calendar-navbar{
+  display: flex;
+}
+
+.calendar-current-day {
+  background-color: #FFC300;
+  font-size: 30px;
 }
 
 .topnav {
