@@ -10,8 +10,21 @@ def calendar_detail(request):
     currentyear = now.year
     currentday = now.day
     startdayofmonth = calendar.day_name[datetime.datetime(now.year,now.month,1).weekday()]
+    startdaynumber = datetime.datetime(now.year,now.month,1).weekday()
+    enddaynumber = datetime.datetime(now.year,now.month,numberofdays).weekday()
+    enddays = 6 - enddaynumber
+    startblanks = []
+    endblanks = []
+    i = 0
+    for i in range(startdaynumber):
+        startblanks.append(i)
+
     monthdays = []
+    i = 0
     for i in range(numberofdays):
         monthdays.append(i+1)
+    i = 1
+    for i in range(6 - enddaynumber):
+        endblanks.append(i)
     events = Event.objects.all()
-    return render(request, 'thecalendar/base.html', {'monthdays': monthdays , 'currentmonthname': currentmonthname ,'currentyear' : currentyear , 'currentday' : currentday , 'startdayofmonth': startdayofmonth})
+    return render(request, 'thecalendar/base.html', {'monthdays': monthdays , 'currentmonthname': currentmonthname ,'currentyear' : currentyear , 'currentday' : currentday , 'startdayofmonth': startdayofmonth , 'startblanks' : startblanks , 'endblanks' : endblanks})

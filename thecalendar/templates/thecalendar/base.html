@@ -23,12 +23,18 @@
       <div class="grid-item calendar-header">Friday</div>
       <div class="grid-item calendar-header">Saturday</div>
       <div class="grid-item calendar-header">Sunday</div>
+      {% for blank in startblanks %}
+        <div class="grid-item"></div>
+      {% endfor %}
       {% for day in monthdays %}
         {% if day == currentday %}
           <div class="grid-item calendar-current-day">{{ day }}</div>
         {% else %}
           <div class="grid-item">{{ day }}</div>
         {% endif %}
+      {% endfor %}
+      {% for blank in endblanks %}
+        <div class="grid-item"></div>
       {% endfor %}
     </div>
   </body>
