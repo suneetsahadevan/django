@@ -3,6 +3,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/thecalendar.css' %}">
   </head>
 
@@ -13,28 +14,46 @@
       <a href="#contact">Incidents</a>
       <a href="#about">Alerts</a>
     </div>
-    <h1 class="calendar-navbar">The Calendar: {{currentmonthname}} {{currentyear}}  Month Starts with :{{startdayofmonth}}</h1>
-    <div class="grid-container">
 
-      <div class="grid-item calendar-header">Monday</div>
-      <div class="grid-item calendar-header">Tuesday</div>
-      <div class="grid-item calendar-header">Wednesday</div>
-      <div class="grid-item calendar-header">Thursday</div>
-      <div class="grid-item calendar-header">Friday</div>
-      <div class="grid-item calendar-header">Saturday</div>
-      <div class="grid-item calendar-header">Sunday</div>
-      {% for blank in startblanks %}
-        <div class="grid-item"></div>
-      {% endfor %}
-      {% for day in monthdays %}
-        {% if day == currentday %}
-          <div class="grid-item calendar-current-day">{{ day }}</div>
-        {% else %}
-          <div class="grid-item">{{ day }}</div>
-        {% endif %}
-      {% endfor %}
-      {% for blank in endblanks %}
-        <div class="grid-item"></div>
-      {% endfor %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2">
+          <form action="/thecalendar/" method="post">
+            <div class="form-group">
+              <label for="year">Year: </label>
+              <input id="year" type="text" name="year" value="{{ year }}">
+              <label for="month">Month: </label>
+              <input id="month" type="text" name="month" value="{{ month }}">
+              <input type="submit" value="OK">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-10">
+          <h1>The Calendar: {{currentmonthname}} {{currentyear}}  Month Starts with :{{startdayofmonth}}</h1>
+          <div class="grid-container">
+
+            <div class="grid-item calendar-header">Monday</div>
+            <div class="grid-item calendar-header">Tuesday</div>
+            <div class="grid-item calendar-header">Wednesday</div>
+            <div class="grid-item calendar-header">Thursday</div>
+            <div class="grid-item calendar-header">Friday</div>
+            <div class="grid-item calendar-header">Saturday</div>
+            <div class="grid-item calendar-header">Sunday</div>
+            {% for blank in startblanks %}
+              <div class="grid-item"></div>
+            {% endfor %}
+            {% for day in monthdays %}
+              {% if day == currentday %}
+                <div class="grid-item calendar-current-day">{{ day }}</div>
+              {% else %}
+                <div class="grid-item">{{ day }}</div>
+              {% endif %}
+            {% endfor %}
+            {% for blank in endblanks %}
+              <div class="grid-item"></div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
   </body>
