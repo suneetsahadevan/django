@@ -1,5 +1,6 @@
 import datetime
 import re
+from six import string_types
 
 from django.forms.widgets import Widget, Select
 from django.utils.dates import MONTHS
@@ -8,6 +9,7 @@ from django.utils.safestring import mark_safe
 __all__ = ('MonthYearWidget',)
 
 RE_DATE = re.compile(r'(\d{4})-(\d\d?)-(\d\d?)$')
+
 
 class MonthYearWidget(Widget):
     """
@@ -39,7 +41,7 @@ class MonthYearWidget(Widget):
             year_val, month_val = value.year, value.month
         except AttributeError:
             year_val = month_val = None
-            if isinstance(value, basestring):
+            if isinstance(value, string_types):
                 match = RE_DATE.match(value)
                 if match:
                     year_val, month_val, day_val = [int(v) for v in match.groups()]
@@ -51,11 +53,11 @@ class MonthYearWidget(Widget):
         else:
             id_ = 'id_%s' % name
 
-        month_choices = MONTHS.items()
+        month_choices = list(MONTHS.items())
         if not (self.required and value):
             month_choices.append(self.none_value)
         month_choices.sort()
-        local_attrs = self.build_attrs(id=self.month_field % id_)
+        local_attrs = self.build_attrs(base_attrs=self.attrs)
         s = Select(choices=month_choices)
         select_html = s.render(self.month_field % name, month_val, local_attrs)
         output.append(select_html)

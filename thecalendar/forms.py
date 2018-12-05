@@ -1,6 +1,8 @@
 from django import forms
+from .MonthYearWidget import MonthYearWidget
+
 
 class Get_year_month(forms.Form):
-    date = forms.DateField(
-    required=False, widget=MonthYearWidget(years=xrange(2017,2010))
-    )
+    year_month = forms.DateField(required=False, widget=MonthYearWidget(years=range(2017,2021)))
+    def __str__(self):
+        return self.year_month
